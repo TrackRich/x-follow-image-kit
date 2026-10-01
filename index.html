@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>7 images that get follows on X</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root { --bg:#14110e; --card:#1e1a16; --line:#3a322a; --brass:#c4a574; --cream:#f3eadf; --mute:#a89884; --ok:#8fbf9f; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--cream); font-family:Geist, system-ui, sans-serif; }
+header { padding:48px 6vw 12px; max-width:1180px; margin:0 auto; }
+h1 { font-family:"Instrument Serif", serif; font-weight:400; font-size:clamp(36px,5vw,64px); line-height:.95; margin:0 0 12px; }
+.lede { color:var(--mute); max-width:640px; font-size:16px; line-height:1.5; }
+.filters { display:flex; gap:8px; flex-wrap:wrap; padding:18px 6vw 8px; max-width:1180px; margin:0 auto; }
+button.f, button.copy, button.pick { border:1px solid var(--line); background:transparent; color:var(--cream); border-radius:999px; padding:8px 14px; cursor:pointer; font:inherit; }
+button.f.on, button.pick.on { background:var(--brass); color:#1a140e; border-color:var(--brass); }
+.grid { display:grid; grid-template-columns:repeat(12,1fr); gap:14px; padding:18px 6vw 64px; max-width:1180px; margin:0 auto; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:18px; grid-column:span 4; display:flex; flex-direction:column; gap:10px; min-height:280px; }
+.card.wide { grid-column:span 8; }
+.card.full { grid-column:span 12; }
+.kicker { color:var(--brass); letter-spacing:.12em; font-size:11px; text-transform:uppercase; }
+.card h2 { font-family:"Instrument Serif", serif; font-weight:400; font-size:28px; margin:0; }
+.tags { display:flex; gap:6px; flex-wrap:wrap; }
+.tag { font-size:11px; border:1px solid var(--line); border-radius:999px; padding:3px 8px; color:var(--mute); }
+.tag.follow { color:var(--ok); border-color:#3d5c48; }
+.tag.talk { color:#e7c27a; border-color:#6a5428; }
+.tag.sell { color:#d7b0a0; border-color:#6a4034; }
+.preview { background:#2a241e; border-radius:12px; min-height:120px; display:grid; place-items:center; color:var(--brass); font-family:"Instrument Serif", serif; font-size:22px; text-align:center; padding:16px; }
+.caption { font-size:14px; color:var(--mute); line-height:1.45; }
+prompt, .prompt { font-size:13px; background:#120f0c; border-radius:10px; padding:10px; color:#efe4d4; white-space:pre-wrap; }
+.row { display:flex; gap:8px; margin-top:auto; }
+.hidden { display:none !important; }
+.score { font-variant-numeric:tabular-nums; color:var(--brass); }
+@media (max-width:900px) { .card, .card.wide, .card.full { grid-column:span 12; } }
+</style>
+</head>
+<body>
+<header>
+<div class="kicker">Hand-off demo · brass pocket timer template</div>
+<h1>Seven images that make someone follow.</h1>
+<p class="lede">A filterable bento of the set that creates conversation and follows on X. Same founder, same bench, same object, so panel 2 has a payoff. Swap the timer for your product. Comments like “instant follow” cluster on signature style and detail, not on catalog shots.</p>
+</header>
+<div class="filters" id="filters">
+<button class="f on" data-f="all">All 7</button>
+<button class="f" data-f="follow">Follow magnet</button>
+<button class="f" data-f="talk">Conversation</button>
+<button class="f" data-f="sell">Also sells</button>
+<button class="f" data-f="play">Play the week</button>
+</div>
+<div class="grid" id="grid"></div>
+<script>
+const items = [
+ { id:1, span:"wide", jobs:["follow","sell"], kicker:"01 · signature", title:"One piece they can recognize", preview:"Founder + brass timer + bench", why:"Instant-follow replies sit on a style people want again. The image is the pitch.", caption:"The only timer I make. Same bench, every post.", prompt:"A one-person workshop, warm side light, a machinist at a wooden bench holding a small brass pocket timer, film still, recognizable face, no text, no logo." },
+ { id:2, span:"", jobs:["follow","talk","sell"], kicker:"02 · detail crop", title:"Zoom that starts a how", preview:"Knurl, engraving, oil", why:"Commitment to details is the other phrase glued to instant-follow replies. Replies ask how.", caption:"The knurl took longer than the case.", prompt:"Extreme close-up of a brass pocket timer crown, knurled edge, tiny engraved numerals, oil sheen, same warm light as the bench photo, no text." },
+ { id:3, span:"", jobs:["talk","sell","follow"], kicker:"03 · before / after", title:"Same angle, a number", preview:"Day 1 blank → day 18 running", why:"Bookmarks and how-long replies. The number is what makes it proof instead of a compliment.", caption:"Blank brass to a running timer. 18 shop days.", prompt:"Split image, same desk and angle. Left: raw brass blank. Right: finished pocket timer. Small label only: Day 1 / Day 18." },
+ { id:4, span:"", jobs:["talk","sell"], kicker:"04 · annotated chart", title:"One claim someone can call wrong", preview:"Accuracy vs price, one outlier", why:"Follow is for the next setup. Conversation is the disagreement. A chart with no claim is decoration.", caption:"Under $200, this is the outlier. Argue the axis.", prompt:"Clean dark chart, two axes Price and seconds-per-day drift, a cluster of dots and one brass-colored outlier labeled pocket timer, one sentence claim, readable on a phone." },
+ { id:5, span:"", jobs:["talk","sell","follow"], kicker:"05 · raw screenshot", title:"Ugly result, marked", preview:"Orders: 41 · circled", why:"Build-in-public proof. Designed infographics look like ads. A marked screenshot looks like a post.", caption:"41 orders. Circled the one that was a return.", prompt:"Photographed laptop screen, plain order list, 41 orders, one row circled in red marker, workshop reflected in the screen, no redesign, no mockup chrome." },
+ { id:6, span:"wide", jobs:["talk","sell"], kicker:"06 · A or B", title:"Force a side", preview:"Crown A vs crown B", why:"A-or-B beats stories on reach. Replies are the vote. The winner becomes the ad.", caption:"Which crown ships? A or B. Reply with one letter.", prompt:"Two brass timer crowns side by side on the same bench, labeled A and B only, identical lighting, one knurled, one smooth, asking for a vote." },
+ { id:7, span:"", jobs:["follow","sell"], kicker:"07 · panel 2", title:"The reason the follow pays off", preview:"Same man, next step, 2/7", why:"A series number is the retention version of the signature image. They follow so they do not miss the next panel.", caption:"2/7. Case is closed. Movement goes in tomorrow.", prompt:"Same machinist, same bench, same brass timer, now with the case closed and a tiny movement beside it, corner mark 2/7, same light and wardrobe as image 1." }
+];
+const grid = document.getElementById("grid");
+function card(it) {
+ const el = document.createElement("article");
+ el.className = "card " + (it.span || "");
+ el.dataset.jobs = it.jobs.join(" ");
+ el.innerHTML = `<div class="kicker">${it.kicker}</div><h2>${it.title}</h2><div class="preview">${it.preview}</div><p class="caption">${it.why}</p><div class="tags">${it.jobs.map(j => `<span class="tag ${j}">${j}</span>`).join("")}</div><div class="prompt">${it.caption}\n\n${it.prompt}</div><div class="row"><button class="copy">Copy caption + prompt</button></div>`;
+ el.querySelector(".copy").onclick = () => navigator.clipboard.writeText(it.caption + "\n\n" + it.prompt);
+ return el;
+}
+function render(filter) {
+ grid.innerHTML = "";
+ if (filter === "play") {
+ const play = document.createElement("article");
+ play.className = "card full";
+ play.innerHTML = `<div class="kicker">Playable week</div><h2>Post in this order. Score the thread.</h2><p class="caption">Pick the image you would actually follow for. The set only works if 1 and 7 are the same person and the same object.</p><div id="picks" class="filters" style="padding:0"></div><p class="score" id="score">0 selected</p>`;
+ grid.appendChild(play);
+ const picks = play.querySelector("#picks");
+ items.forEach(it => {
+ const b = document.createElement("button");
+ b.className = "pick";
+ b.textContent = it.kicker;
+ b.onclick = () => { b.classList.toggle("on"); play.querySelector("#score").textContent = picks.querySelectorAll(".on").length + " selected · follow if 1 and 7 are both on"; };
+ picks.appendChild(b);
+ });
+ return;
+ }
+ items.filter(it => filter === "all" || it.jobs.includes(filter)).forEach(it => grid.appendChild(card(it)));
+}
+document.getElementById("filters").onclick = (e) => {
+ const b = e.target.closest("button.f");
+ if (!b) return;
+ document.querySelectorAll("button.f").forEach(x => x.classList.remove("on"));
+ b.classList.add("on");
+ render(b.dataset.f);
+};
+render("all");
+</script>
+</body>
+</html>
